@@ -24,13 +24,8 @@ class ProductList extends React.Component {
      */
     var createproductRow = function(product) {
       return (
-        <div className="container" key={product.id}>
-          <div className="col-sm-12">
-              {this.props.isDefaultState ? (
-                <div><p className="text-sm-left">Showing: {this.props.productsToShow} products - Hidden: {this.props.productsToHide}</p></div>
-              ): (
-                <div><p className="text-sm-left"> Showing: {this.props.productsToShow} products </p></div>
-              )}
+          <div className="col-sm-12" key={product.id}>
+              
               <div className="card text-left">
                   <div className="card-body">
                     <h5 className="card-title text-left">{product.name}</h5>
@@ -50,7 +45,6 @@ class ProductList extends React.Component {
                 </div>
               </div>
             </div>
-        </div>
       );
   }
 
@@ -58,7 +52,12 @@ class ProductList extends React.Component {
    * Returns new product that will be shown inside Product component.
    */
   return (
-      <div>
+      <div className="container">
+        {this.props.isDefaultState ? (
+                <div><p className="text-sm-left">Showing: {this.props.productsToShow} products - Hidden: {this.props.productsToHide}</p></div>
+              ): (
+                <div><p className="text-sm-left"> Showing: {this.props.productsToShow} products </p></div>
+              )}
         {this.props.products.map(createproductRow, this)}     
       </div>
     );
